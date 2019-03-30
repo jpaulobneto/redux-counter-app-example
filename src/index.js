@@ -1,18 +1,22 @@
 import React from "react";
+import { Provider } from "react-redux";
 import ReactDOM from "react-dom";
 import "./index.css";
-import { CounterApp } from "./components/CounterApp/CounterApp";
-import * as serviceWorker from "./serviceWorker";
 import { createStore } from "redux";
-import { valueReducer } from "./containers/CounterApp/reducers/valueReducer";
+import { CounterApp } from "./containers/CounterApp/CounterApp";
+import * as serviceWorker from "./serviceWorker";
+import { counterReducer } from "./containers/CounterApp/reducers/counterReducer";
 
-const store = createStore(valueReducer);
+const store = createStore(counterReducer);
 
-const render = () => ReactDOM.render(<CounterApp store={store} />, document.getElementById("root")); 
+console.log(store.getState());
 
-store.subscribe(render);
-
-render();
+ReactDOM.render(
+  <Provider store={store}>
+    <CounterApp />
+  </Provider>,
+  document.getElementById("root")
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import { INCREMENT, DECREMENT } from "../ActionTypes";
 
-const value = (state = 0, action) => {
+const counter = (state = 0, action) => {
   const { payload } = action;
 
   switch (action.type) {
@@ -14,6 +14,6 @@ const value = (state = 0, action) => {
   }
 };
 
-export const valueReducer = combineReducers({
-  value
+export const counterReducer = combineReducers({
+  counter
 });
